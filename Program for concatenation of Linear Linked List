@@ -1,0 +1,155 @@
+#include <stdio.h>
+#include <stdlib.h>
+// Linked List Node
+struct node {
+    int info;
+    struct node* next;
+};
+struct node* start1 = NULL;
+struct node* start2 = NULL;
+  
+// Function to create list with n nodes initially 
+void createList_1()
+{
+    if (start1 == NULL) {
+        int n;
+        printf("\nEnter the number of nodes: ");
+        scanf("%d", &n);
+        if (n != 0) {
+            int data;
+            struct node* newnode;
+            struct node* temp1;
+            newnode = malloc(sizeof(struct node));
+            start1 = newnode;
+            temp1 = start1;
+            printf("\nEnter number to"
+                   " be inserted : ");
+            scanf("%d", &data);
+            start1->info = data;
+  
+            for (int i = 2; i <= n; i++) {
+                newnode = malloc(sizeof(struct node));
+                temp1->next = newnode;
+                printf("\nEnter number to"
+                       " be inserted : ");
+                scanf("%d", &data);
+                newnode->info = data;
+                temp1 = temp1->next;
+            }
+        }
+        printf("\nThe list 1 is created\n");
+    }
+    else
+        printf("\nThe list 1 is already created\n");
+}
+void createList_2()
+{
+    if (start2 == NULL) {
+        int n;
+        printf("\nEnter the number of nodes: ");
+        scanf("%d", &n);
+        if (n != 0) {
+            int data;
+            struct node* newnode;
+            struct node* temp2;
+            newnode = malloc(sizeof(struct node));
+            start2 = newnode;
+            temp2 = start2;
+            printf("\nEnter number to"
+                   " be inserted : ");
+            scanf("%d", &data);
+            start2->info = data;
+  
+            for (int i = 2; i <= n; i++) {
+                newnode = malloc(sizeof(struct node));
+                temp2->next = newnode;
+                printf("\nEnter number to"
+                       " be inserted : ");
+                scanf("%d", &data);
+                newnode->info = data;
+                temp2 = temp2->next;
+            }
+        }
+        printf("\nThe list 2 is created\n");
+    }
+    else
+        printf("\nThe list 2 is already created\n");
+}
+
+void concatenate()
+{
+    if(start1==NULL)
+    {
+        return start2;
+    }
+    else if(start2==NULL)
+    {
+        return start1;
+    }
+    else
+    {
+        struct node* temp;
+        temp=start1;
+        while(temp->next!=NULL)
+        {
+            temp=temp->next;
+            if(temp->next==NULL)
+            {
+                temp->next=start2;
+            }
+            return start1;
+        }
+    }
+}
+void traverse()
+{
+    struct node* temp;
+  
+    // List is empty
+    if (start1 == NULL)
+        printf("\nList is empty\n");
+  
+    // Else print the LL
+    else {
+        temp = start1;
+        while (temp != NULL) {
+            printf("Data = %d\n", temp->info);
+            temp = temp->next;
+        }
+    }
+}
+int main()
+{
+    int choice;
+    while (1) {
+  
+        printf("\n\t1  To see list\n");
+        printf("\t2  Insert data in linked list 1\n");
+        printf("\t3  Insert data in linked list 2\n");
+        printf("\t4  Conacatenation of two linked list\n");
+        printf("\t5 To exit\n");
+        printf("\nEnter Choice :\n");
+        scanf("%d", &choice);
+  
+        switch (choice) {
+        case 1:
+            traverse();
+            break;
+        case 2:
+            createList_1();
+            break;
+        case 3:
+            createList_2();
+            break;
+        case 4:
+            concatenate();
+            break;
+        case 5:
+            exit(1);
+            break;
+        default:
+            printf("Incorrect Choice\n");
+        }
+    }
+    return 0;
+}
