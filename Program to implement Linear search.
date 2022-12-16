@@ -1,0 +1,109 @@
+#include <stdio.h>
+#include <stdlib.h>
+// Linked List Node
+struct node {
+    int info;
+    struct node* next;
+};
+struct node* start = NULL;
+  
+// Function to create list with n nodes initially 
+void createList()
+{
+    if (start == NULL) {
+        int n;
+        printf("\nEnter the number of nodes: ");
+        scanf("%d", &n);
+        if (n != 0) {
+            int data;
+            struct node* newnode;
+            struct node* temp;
+            newnode = malloc(sizeof(struct node));
+            start = newnode;
+            temp = start;
+            printf("\nEnter number to"
+                   " be inserted : ");
+            scanf("%d", &data);
+            start->info = data;
+  
+            for (int i = 2; i <= n; i++) {
+                newnode = malloc(sizeof(struct node));
+                temp->next = newnode;
+                printf("\nEnter number to"
+                       " be inserted : ");
+                scanf("%d", &data);
+                newnode->info = data;
+                temp = temp->next;
+            }
+        }
+        printf("\nThe list is created\n");
+    }
+    else
+        printf("\nThe list is already created\n");
+}
+void linearsearch()
+{
+    int key;
+    struct node *temp;
+    temp=start;
+    printf("enter the key to be search \n");
+    scanf("%d",&key);
+    while(temp!=0)
+    {
+        if(temp->info==key)
+        {
+            printf("%d is found is the linked list at the given %d location",key,temp);
+            break;
+        }
+        temp=temp->next;
+    }
+}
+
+void traverse()
+{
+    struct node* temp;
+  
+    // List is empty
+    if (start == NULL)
+        printf("\nList is empty\n");
+  
+    // Else print the LL
+    else {
+        temp = start;
+        while (temp != NULL) {
+            printf("Data = %d\n", temp->info);
+            temp = temp->next;
+        }
+    }
+}
+int main()
+{
+    int choice;
+    while (1) {
+  
+        printf("\n\t1 To see list\n");
+        printf("\t2 Insert data in linked list 1\n");
+        printf("\t3 perform linear search\n");
+        printf("\t4 To exit\n");
+        printf("\nEnter Choice :\n");
+        scanf("%d", &choice);
+  
+        switch (choice) {
+        case 1:
+            traverse();
+            break;
+        case 2:
+            createList();
+            break;
+        case 3:
+            linearsearch();
+            break;
+        case 4:
+            exit(1);
+            break;
+        default:
+            printf("Incorrect Choice\n");
+        }
+    }
+    return 0;
+}
