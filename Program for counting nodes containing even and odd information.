@@ -1,0 +1,103 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct node {
+    int info;
+    struct node* next;
+};
+struct node* start = NULL;
+void createList()
+{
+    if (start == NULL) {
+        int n;
+        printf("\nEnter the number of nodes: ");
+        scanf("%d", &n);
+        if (n != 0) {
+            int data;
+            struct node* newnode;
+            struct node* temp;
+            newnode = (struct node* )malloc(sizeof(struct node));
+            start = newnode;
+            temp = start;
+            printf("\nEnter number to"
+                   " be inserted : ");
+            scanf("%d", &data);
+            start->info = data;
+  
+            for (int i = 2; i <= n; i++) {
+                newnode = malloc(sizeof(struct node));
+                temp->next = newnode;
+                printf("\nEnter number to"
+                       " be inserted : ");
+                scanf("%d", &data);
+                newnode->info = data;
+                temp = temp->next;
+            }
+        }
+        printf("\nThe list is created\n");
+    }
+    else
+        printf("\nThe list is already created\n");
+}
+
+void countlist()
+{
+	struct node* temp=start;
+	int count1=0;
+	int count2=0;
+	
+	while(temp!=NULL)
+	{
+	    if((temp->info)%2==0)
+	    {
+	        count1++;
+	    }
+	    else
+	    {
+	        count2++;
+	    }
+		temp=temp->next;
+// 		count++;
+	}
+	printf("\n Total Number of even nodes is %d",count1);
+	printf("\n Total Number of odd nodes is %d",count2);
+}
+void traverse()
+{
+    struct node* temp;
+  
+    // List is empty
+    if (start == NULL)
+        printf("\nList is empty\n");
+  
+    // Else print the LL
+    else {
+        temp = start;
+        while (temp != NULL) {
+            printf("Data = %d\n", temp->info);
+            temp = temp->next;
+        }
+    }
+}
+
+void main()
+{
+	int choice;
+	while(1)
+	{
+		printf("\n 1.Press 1 to create list and insert the data");
+		printf("\n 2.Press 2 to count the total nodes");
+		printf("\n 3.Press 3 to display the linked list");
+		scanf("%d",&choice);
+		switch(choice)
+		{
+			case 1: createList();
+			break;
+			case 2: countlist();
+			break;
+			case 3: traverse();
+			break;
+			default: printf("Incorrect Choice\n");
+		}
+	}
+	return 0;
+}
