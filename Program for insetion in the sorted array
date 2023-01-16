@@ -1,0 +1,51 @@
+#include<stdio.h>
+int sort(int *array,int n)
+{
+    int i,j,temp;
+    for(i=1;i<n;i++)
+    {
+        temp=array[i];
+        j=i-1;
+        while(j>=0 && array[j]>temp)
+        {
+            array[j+1]=array[j];
+            j=j-1;
+        }
+        array[j+1]=temp;
+    }
+}
+
+int insert(int *array,int n)
+{
+    int i,pos,value;
+    for(i=0;i<n;i++)
+    {
+        printf("%d ",array[i]);
+    }
+    printf("\n");
+    printf("please enter the position where you want to insert the element in the array\n");
+    scanf("%d",&pos);
+    printf("enter the value to be inserted in the array\n");
+    scanf("%d",&value);
+    for(i=n-1;i>=pos-1;i--)
+        {
+            array[i+1]=array[i];
+        }
+    array[pos-1]=value;
+
+    printf("the resultant array is: \n");
+    for(i=0;i<=n;i++)
+    {
+        printf("%d ",array[i]);
+    }
+}
+
+int main()
+{
+    int array[]={9, 5, 1, 4, 3};
+    int n=sizeof(array)/sizeof(array[0]);
+    sort(array,n);
+    printf("insertion operation in the array\n");
+    insert(array,n);
+    return 0;
+}
