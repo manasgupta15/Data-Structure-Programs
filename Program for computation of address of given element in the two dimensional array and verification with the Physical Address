@@ -1,0 +1,51 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+int main()
+{
+    long int LocR,LocC,B,W,M,N,i,j,Lr,Ur,Lc,Uc,check;
+    printf("This is a simple program to find the address ..The address location of 'a[i][j]' in 2D array \n");
+    printf("Enter the W that is the size of 1 array element \n");
+    scanf("%d",&W);
+
+    printf("Enter the Base Address: \n");
+    scanf("%d",&B);
+
+    printf("Enter the lower limit of Row: \n");
+    scanf("%d",&Lr);
+
+    printf("Enter the upper limit of Row: \n");
+    scanf("%d",&Ur);
+
+    printf("Enter the lower limit of column: \n");
+    scanf("%d",&Lc);
+
+    printf("enter the upper limit of column: \n");
+    scanf("%d",&Uc);
+
+    printf("Enter the row subscript whose address is to be found: \n");
+    scanf("%d",&i);
+
+    printf("enter the column subscript whose address is to be found: \n");
+    scanf("%d",&j);
+
+    M=(Ur-Lr)+1;      // M is no. of rows
+    N=(Uc-Lc)+1;      // N is no. of col
+
+    LocR=B+(W*(N*(i-Lr)+(j-Lc)));
+    LocC=B+(W*((i-Lr)+M*(j-Lc)));
+
+    label: printf("Select 1 to follow RMS & select 2 to follow CMS \n");
+    scanf("%d",&check);
+
+    switch(check)
+    {
+        case 1: printf("According to RMS system address of arr[%ld][%ld] is %ld",i,j,LocR);
+        break;
+        case 2: printf("According to CMS system address of a[%ld][%ld] is %ld",i,j,LocC);
+        break;
+        default: printf("please enter the valid number: \n");
+        goto label;
+    }
+    return 0;
+}
