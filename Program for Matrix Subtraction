@@ -1,0 +1,36 @@
+#include<stdio.h>
+int main()
+{
+    int array[10][10],array2[10][10],difference[10][10],i,j,row,col;
+    printf("enter the number of rows and columns: \n");
+    scanf("%d%d",&row,&col);
+
+    printf("enter the elements of matrix 1: \n");
+    for(i=0;i<row;i++)
+    {
+        for(j=0;j<col;j++)
+        {
+            scanf("%d",&array[i][j]);
+        }
+    }
+    printf("enter the elements of second matrix: \n");
+    for(i=0;i<row;i++)
+    {
+        for(j=0;j<col;j++)
+        {
+            scanf("%d",&array2[i][j]);
+        }
+    }
+
+    printf("The addition of entered matrix is: \n");
+    for(i=0;i<row;i++)
+    {
+        for(j=0;j<col;j++)
+        {
+            difference[i][j]=array[i][j]-array2[i][j];
+            printf("%d\t",difference[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
