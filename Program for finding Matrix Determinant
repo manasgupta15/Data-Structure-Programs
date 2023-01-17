@@ -1,0 +1,18 @@
+#include<Stdio.h>
+
+int main()
+{
+    int row,col,a[2][2],det=0;
+    printf("enter the matrix element: \n");
+    for(row=0;row<2;row++)
+    {
+        for(col=0;col<2;col++)
+        {
+            scanf("%d",&a[row][col]);
+        }
+    }
+
+    det=(a[0][0]*a[1][1]-(a[0][1]*a[1][0]));
+    printf("the determinant of the matrix is %d",det);
+    return 0;
+}
