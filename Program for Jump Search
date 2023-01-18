@@ -1,0 +1,56 @@
+#include<Stdio.h>
+#include<math.h>
+
+int min(int a,int b)
+{
+    if(b>a)
+    {
+        return a;
+    }
+    else
+    {
+        return b;
+    }
+}
+int jumpsearch(int *array,int key,int n)
+{
+    int step=sqrt(n);
+    int prev=0;
+
+    while(array[min(step,n)-1]>key)
+    {
+        prev=step;
+        step=step+sqrt(n);
+        if(prev>=n)
+        {
+            return -1;
+        }
+    }
+
+    while(array[prev]<key)
+    {
+        prev++;
+        if(array[prev]==key)
+            return prev;
+    }
+    return -1;
+
+}
+
+int main()
+{
+    int array[]={ 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610};
+    int key=55;
+    int n=sizeof(array)/sizeof(array[0]);
+    int index=jumpsearch(array,key,n);
+    if(index==-1)
+    {
+        printf("element is not found in the array");
+
+    }
+    else
+    {
+        printf("Number is at %d index",index);
+    }
+    return 0;
+}
