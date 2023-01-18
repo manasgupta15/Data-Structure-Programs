@@ -1,0 +1,50 @@
+#include<Stdio.h>
+
+int ternarysearch(int low,int high,int key,int array[])
+{
+    if(low<=high)
+    {
+        int mid1=low+(high-low)/3;
+        int mid2=high-(high-low)/3;
+
+        if(array[mid1]==key)
+        {
+            return mid1;
+        }
+        if(array[mid2]==key)
+        {
+            return mid2;
+        }
+
+        if(key<array[mid1])
+        {
+            return ternarysearch(low,mid1-1,key,array);
+        }
+        else if(key>array[mid2])
+        {
+            return ternarysearch(mid2+1,high,key,array);
+        }
+        else
+            return ternarysearch(mid1+1,mid2-1,key,array);
+    }
+    return -1;
+}
+
+int main()
+{
+    int low,high,key,n;
+    int array[]={1,2,3,4,5,6,7,8,9,10};
+    key=5;
+    n=sizeof(array)/sizeof(array[0]);
+
+    int result=ternarysearch(0,n-1,key,array);
+
+    if(result==-1)
+    {
+        printf("element not found");
+    }
+    else
+    {
+        printf("element is found at %d",result);
+    }
+}
