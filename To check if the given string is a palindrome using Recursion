@@ -1,0 +1,47 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdbool.h>
+int checkpal(char str[],int first,int last)
+{
+    if(first<last+1)
+    {
+        first++;
+        last--;
+        return checkpal(str,first,last);
+    }
+
+    if(first==last)
+    {
+        return 1;
+    }
+    if(str[first]!=str[last])
+    {
+        return 0;
+    }
+    return 1;
+}
+
+int main()
+{
+    char str[]="madam";
+    int result;
+    int length=strlen(str);
+    if(length==0)
+    {
+        result=1;
+    }
+    else
+    {
+        result=checkpal(str,0,length-1);
+    }
+
+    if(result==1)
+    {
+        printf("Input string is palindrome");
+    }
+    else
+    {
+        printf("Input string is not palindrome");
+    }
+    return 0;
+}
