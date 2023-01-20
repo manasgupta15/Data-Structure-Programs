@@ -1,0 +1,34 @@
+#include<stdio.h>
+struct marks{
+    int roll_no;
+    char name[30];
+    float phys,chem,maths;
+};
+
+int main()
+{
+    struct marks mark[50];
+    int i;
+    for(i=0;i<4;i++)
+    {
+        printf("Student %d\n",i+1);
+        printf("Enter the roll no \n");
+        scanf("%d",&mark[i].roll_no);
+        printf("enter the name of the student: \n");
+        scanf("%s",&mark[i].name);
+        printf("enter the physics marks: \n");
+        scanf("%f",&mark[i].phys);
+        printf("enter the chemistry marks: \n ");
+        scanf("%f",&mark[i].chem);
+        printf("enter the maths marks: \n");
+        scanf("%f",&mark[i].maths);
+    }
+
+    for(i=0;i<4;i++)
+    {
+        printf("student %d\n",i+1);
+        float perc=(mark[i].phys+mark[i].chem+mark[i].maths)/300.0*100;
+        printf("percentage=%f\n",perc);
+    }
+    return 0;
+}
